@@ -1,27 +1,27 @@
 # request-pr-review
 
-🌏 한국어 | [**English**](README.en.md)
+🌏 [**한국어**](README.md) | English
 
-정해진 주기마다 슬랙으로 PR 리뷰 요청을 보내는 Github Actions
+GitHub Actions to request pr reviews via Slack at set times
 
 <img src=https://github.com/user-attachments/assets/a61bc6b7-fffb-449e-9c89-483a198d91ad width="500" alt="intro">
 
 ## Usage
 
-1. 메시지 전달을 위해 `SLACK_BOT_TOKEN` 이름의 secret을 세팅하세요.
+1. Set up a secret named `SLACK_BOT_TOKEN` to send the message.
 
-> 세팅할 Repo > Settings > Secrets > New repository secret
+> Go to the Repo > Settings > Secrets > New repository secret
 
-이때, Value는 슬랙에서 제공하는 `xoxb-` 형태의 토큰이어야 합니다.
+For the value, use a Slack token that starts with `xoxb-`.
 
-2. `.github/workflow/request-pr-review.yml` 파일을 만드세요:
+2. Create a `.github/workflow/request-pr-review.yml` file:
 
 ```yml
 name: request pr review
 
 on:
   schedule:
-    - cron: '0 1 * * 1-5' # 평일 오전 10시마다 수행
+    - cron: '0 1 * * 1-5' # Runs every weekday at 10:00 AM
     
 jobs:
   cron:
@@ -39,17 +39,17 @@ jobs:
 
 ### `token`
 
-**Required** Github에서 제공하는 토큰
+**Required** GitHub token
 
 ### `slackBotToken`
 
-**Required** slack bot을 통해 메시지를 보내기 위한 토큰
+**Required** Slack bot token to send messages
 
 e.g. `xoxb-798572638592-435243279588-9aCaWNnzVYelK9NzMMqa1yxz`
 
 ### `repoUrl`
 
-**Required** 본 액션이 적용될 Github Repo URL
+**Required** GitHub repo URL where this action is applied
 
 e.g. `github.com/username/reponame`
 
